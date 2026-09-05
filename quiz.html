@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jin Uncle Edition ✦</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Noto Nastaliq Urdu", "Noto Naskh Arabic", Georgia, serif;
+    color: white;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 20%, #29294f 0%, transparent 38%),
+        linear-gradient(135deg, #070710, #17172e, #090910);
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px;
+    background-position: 20px 30px, 70px 90px;
+    opacity: .4;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    width: 100%;
+    max-width: 680px;
+    padding: 35px 25px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.13);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.small {
+    opacity: .65;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(38px, 9vw, 65px);
+    margin: 15px 0;
+}
+
+h2 {
+    font-size: clamp(25px, 6vw, 38px);
+    line-height: 1.7;
+}
+
+p {
+    font-size: 19px;
+    line-height: 2.1;
+}
+
+.question {
+    font-size: 23px;
+    line-height: 2;
+    margin: 30px 0;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    width: 100%;
+    padding: 15px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: white;
+    font-family: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.answer:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.13);
+}
+
+.feedback {
+    margin-top: 25px;
+    min-height: 80px;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.next {
+    margin-top: 15px;
+    padding: 12px 28px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 30px;
+    background: rgba(255,255,255,.1);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.final-message {
+    font-size: 19px;
+    line-height: 2.2;
+}
+
+.score {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin: 20px;
+    direction: ltr;
+}
+
+.sparkle {
+    font-size: 40px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-8px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+
+<div class="card" id="quiz">
+
+    <div class="small">
+        Chapter 20 • Jin Uncle Edition
+    </div>
+
+    <h1>ہماری یادوں کا امتحان ✦</h1>
+
+    <p>
+        صرف 7 سوالات ہیں...<br>
+        دیکھتے ہیں جن انکل کو واقعی سب کچھ یاد ہے
+        یا صرف فٹبال یاد رہتی ہے۔ 😂⚽
+    </p>
+
+    <button class="next" onclick="startQuiz()">
+        اچھا چلو، شروع کرتے ہیں ✨
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+    question: "بچپن میں ہمارا رشتہ بنیادی طور پر کیسا تھا؟ 😂",
+    answers: [
+        "ہم شروع سے ہی بہترین دوست تھے",
+        "ہم دونوں بہت شریف اور پُرسکون بچے تھے",
+        "ہم باقاعدہ ایک دوسرے کے دشمن تھے",
+        "ہم ایک دوسرے کو جانتے ہی نہیں تھے"
+    ],
+    correct: 2,
+    feedback:
+        "بالکل درست 😂 بچپن میں تو لگتا تھا ہم دونوں ایک دوسرے کو برداشت ہی نہیں کر سکتے۔"
+},
+
+{
+    question: "میرے لیے تمہارا سب سے مشہور nickname کون سا ہے؟",
+    answers: [
+        "PGL",
+        "Churail",
+        "دونوں، ظاہر ہے 😭",
+        "کوئی بھی نہیں"
+    ],
+    correct: 2,
+    feedback:
+        "دونوں! 😂 تم نے تو میری پوری nickname collection بنا رکھی تھی۔"
+},
+
+{
+    question: "ایک چیز جس کے بغیر Jin Uncle کی کہانی ادھوری ہے؟",
+    answers: [
+        "فٹبال ⚽",
+        "نیند",
+        "کھانا",
+        "مجھے تنگ کرنا 😂"
+    ],
+    correct: 0,
+    feedback:
+        "فٹبال! ⚽ یہ سوال تو شاید پوچھنا ہی نہیں چاہیے تھا۔"
+},
+
+{
+    question: "وقت کے ساتھ ہمارے درمیان سب سے بڑا فرق کیا آیا؟",
+    answers: [
+        "ہم مزید لڑنے لگے",
+        "ہم آہستہ آہستہ دوست اور پھر قریبی بن گئے",
+        "ہم نے بات کرنا چھوڑ دی",
+        "ہم دونوں اچانک بہت سنجیدہ انسان بن گئے 😂"
+    ],
+    correct: 1,
+    feedback:
+        "ہاں۔ 🤍 جو دو بچے ایک دوسرے سے لڑتے رہتے تھے، وہی وقت کے ساتھ دوست بن گئے۔"
+},
+
+{
+    question: "تمہاری کون سی بات ایسی ہے جس کی میں واقعی قدر کرتی ہوں؟",
+    answers: [
+        "تمہارا صبر",
+        "تمہاری ذمہ داری کا احساس",
+        "دوسروں کے ساتھ تمہارا احترام",
+        "یہ سب"
+    ],
+    correct: 3,
+    feedback:
+        "یہ سب۔ 🤍 کیونکہ یہ صرف اچھی باتیں نہیں، میں نے واقعی تمہیں ان چیزوں میں دیکھا ہے۔"
+},
+
+{
+    question: "جب زندگی میں مشکل وقت آیا تو تم نے کیا کیا؟",
+    answers: [
+        "ہار مان لی",
+        "انہیں اپنی پہچان بننے دیا",
+        "مشکل کے باوجود آگے بڑھتے رہے",
+        "ایسے ظاہر کیا جیسے کچھ ہوا ہی نہیں"
+    ],
+    correct: 2,
+    feedback:
+        "تم آگے بڑھتے رہے۔ اور شاید یہی وہ چیز ہے جس پر مجھے تم پر سب سے زیادہ فخر ہے۔ 🤍"
+},
+
+{
+    question: "اور آخر میں... آج تم کس نئے chapter میں داخل ہو رہے ہو؟ ✨",
+    answers: [
+        "Chapter 19.5 😂",
+        "Chapter 20 ✨",
+        "Chapter 'میں ابھی بھی بچہ ہوں'",
+        "Chapter 'Football ہی میری زندگی ہے' ⚽😂"
+    ],
+    correct: 1,
+    feedback:
+        "Chapter 20! ✨ ایک نیا chapter، نئی عمر، اور بہت سی نئی کہانیاں ابھی باقی ہیں۔"
+}
+
+];
+
+let current = 0;
+let score = 0;
+
+function startQuiz() {
+    showQuestion();
+}
+
+function showQuestion() {
+
+    const quiz = document.getElementById("quiz");
+    const q = questions[current];
+
+    quiz.innerHTML = `
+
+        <div class="small">
+            سوال ${current + 1} / ${questions.length}
+        </div>
+
+        <div class="question">
+            ${q.question}
+        </div>
+
+        <div class="answers">
+
+            ${q.answers.map((answer, index) => `
+                <button class="answer"
+                    onclick="chooseAnswer(${index})">
+                    ${answer}
+                </button>
+            `).join("")}
+
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+    `;
+}
+
+function chooseAnswer(index) {
+
+    const q = questions[current];
+    const feedback = document.getElementById("feedback");
+
+    const buttons = document.querySelectorAll(".answer");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+        button.style.cursor = "default";
+    });
+
+    if (index === q.correct) {
+
+        score++;
+
+        feedback.innerHTML =
+            "✓ " + q.feedback;
+
+    } else {
+
+        feedback.innerHTML =
+            "اوہو 😂 یہ جواب نہیں تھا۔<br><br>" +
+            "صحیح جواب تھا:<br>" +
+            "<strong>" + q.answers[q.correct] + "</strong><br><br>" +
+            q.feedback;
+    }
+
+    feedback.innerHTML += `
+        <br>
+        <button class="next" onclick="nextQuestion()">
+            ${current === questions.length - 1
+                ? "نتیجہ دیکھیں ✨"
+                : "اگلا سوال →"}
+        </button>
+    `;
+}
+
+function nextQuestion() {
+
+    current++;
+
+    if (current >= questions.length) {
+        showResult();
+    } else {
+        showQuestion();
+    }
+}
+
+function showResult() {
+
+    const quiz = document.getElementById("quiz");
+
+    let ending = "";
+
+    if (score === 7) {
+
+        ending =
+            "واہ جن انکل! پورے 7/7۔ لگتا ہے واقعی سب کچھ یاد ہے۔ 😂";
+
+    } else if (score >= 5) {
+
+        ending =
+            "برا نہیں! اہم چیزیں تو یاد ہیں۔ 🤍";
+
+    } else {
+
+        ending =
+            "میں مان لیتی ہوں کہ شاید تم اس وقت distracted تھے۔ 😂";
+    }
+
+    quiz.innerHTML = `
+
+        <div class="sparkle">✦</div>
+
+        <div class="small">
+            امتحان مکمل ہوا
+        </div>
+
+        <h2>
+            تم نے Jin Uncle Edition survive کر لیا 😂
+        </h2>
+
+        <div class="score">
+            ${score} / 7
+        </div>
+
+        <p>
+            ${ending}
+        </p>
+
+        <div class="final-message">
+
+            <p>
+                لیکن سچ کہوں تو...
+                یہ اصل میں کوئی امتحان تھا ہی نہیں۔
+            </p>
+
+            <p>
+                بس دل کیا کہ تمہیں ہماری کچھ چھوٹی چھوٹی
+                یادیں دوبارہ یاد دلاؤں۔
+            </p>
+
+            <p>
+                وہ بچپن کی لڑائیاں۔<br>
+                وہ بےکار کی تکرار۔ 😂<br>
+                وہ PGL اور Churail والے نام۔<br>
+                فٹبال۔ ⚽<br>
+                مشکل وقت۔<br>
+                اور وہ انسان جس میں تم وقت کے ساتھ بدلتے گئے۔
+            </p>
+
+            <p>
+                آج تم 20 کے ہو گئے ہو۔
+                ضروری نہیں کہ اس عمر میں زندگی کی ہر چیز
+                figured out ہو۔
+            </p>
+
+            <p>
+                بس سیکھتے رہنا،
+                آگے بڑھتے رہنا،
+                اور اپنے آپ کو ایسا انسان بناتے رہنا
+                جس پر تم خود فخر کر سکو۔
+            </p>
+
+            <p>
+                اور Jin Uncle...
+            </p>
+
+            <p>
+                <strong>
+                مجھے امید ہے کہ تمہیں مجھ پر بھی فخر ہوگا۔ 🤍
+                </strong>
+            </p>
+
+            <p>
+                کیونکہ ہاں...
+                <strong>
+                یہ پوری چیز میں نے خود بنائی ہے۔ 😌✦
+                </strong>
+            </p>
+
+            <p>
+                سالگرہ مبارک۔ 🎂
+            </p>
+
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
