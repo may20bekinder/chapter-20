@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 20 ✨</title>
+<title>Chapter 20 — Jin Uncle ✦</title>
 
 <style>
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -15,7 +19,9 @@ body {
     min-height: 100vh;
     font-family: Georgia, serif;
     color: white;
-    background: linear-gradient(135deg, #080812, #15152b, #090910);
+    background:
+        radial-gradient(circle at 50% 20%, #25254a 0%, transparent 35%),
+        linear-gradient(135deg, #070710, #15152b, #090910);
     text-align: center;
     overflow-x: hidden;
 }
@@ -29,7 +35,8 @@ body {
         radial-gradient(white 1px, transparent 1px);
     background-size: 90px 90px, 140px 140px;
     background-position: 20px 30px, 70px 90px;
-    opacity: 0.5;
+    opacity: 0.45;
+    z-index: 0;
 }
 
 section {
@@ -40,6 +47,7 @@ section {
     justify-content: center;
     align-items: center;
     position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -49,7 +57,8 @@ h1 {
 }
 
 h2 {
-    font-size: 35px;
+    font-size: clamp(28px, 6vw, 40px);
+    margin-bottom: 25px;
 }
 
 p {
@@ -62,6 +71,7 @@ p {
     opacity: 0.7;
     letter-spacing: 3px;
     text-transform: uppercase;
+    font-size: 13px;
 }
 
 button {
@@ -73,14 +83,16 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
     background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
 }
 
 .card {
-    max-width: 650px;
+    max-width: 700px;
     padding: 35px;
     margin: 15px;
     border-radius: 25px;
@@ -91,8 +103,8 @@ button:hover {
 
 .wishes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    max-width: 750px;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    max-width: 800px;
     width: 100%;
     gap: 12px;
 }
@@ -101,14 +113,13 @@ button:hover {
     padding: 20px 10px;
     border-radius: 18px;
     background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: 0.3s;
 }
 
-.hidden {
-    display: none;
-}
-
-#final {
-    font-size: 25px;
+.wish:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.11);
 }
 
 .heart {
@@ -116,10 +127,54 @@ button:hover {
     animation: float 2s infinite ease-in-out;
 }
 
+.hidden {
+    display: none;
+}
+
+#countdown {
+    font-size: clamp(28px, 7vw, 55px);
+    letter-spacing: 5px;
+    margin: 25px;
+}
+
+.memory {
+    font-size: 20px;
+    padding: 18px;
+    margin: 8px;
+    border-left: 2px solid rgba(255,255,255,0.35);
+    text-align: left;
+}
+
+.highlight {
+    font-size: 23px;
+    margin: 25px 0;
+}
+
+#final {
+    font-size: 24px;
+}
+
 @keyframes float {
     50% {
         transform: translateY(-10px);
     }
+}
+
+@keyframes glow {
+    50% {
+        text-shadow: 0 0 25px rgba(255,255,255,0.5);
+    }
+}
+
+.glow {
+    animation: glow 2s infinite;
+}
+
+footer {
+    padding: 40px 20px;
+    opacity: 0.5;
+    position: relative;
+    z-index: 1;
 }
 </style>
 </head>
@@ -128,12 +183,20 @@ button:hover {
 
 <div class="stars"></div>
 
-<section>
+
+<!-- OPENING -->
+
+<section id="home">
+
     <div class="small">September 6, 2026</div>
-    <div class="small">For Jin Uncle ✦</div>
+
+    <div class="small" style="margin-top:15px;">
+        For Jin Uncle ✦
+    </div>
+
     <div class="heart">✦</div>
 
-    <h1>Chapter 20</h1>
+    <h1 class="glow">Chapter 20</h1>
 
     <p>
         A new decade.<br>
@@ -141,29 +204,150 @@ button:hover {
         And so many beautiful pages still waiting to be written.
     </p>
 
-    <button onclick="scrollToSection('begin')">
-        Begin your chapter →
-    </button>
+    <div id="countdown">00:00:00</div>
+
+    <p class="small">
+        Something special is waiting at midnight...
+    </p>
+
 </section>
 
 
+<!-- BEGIN -->
+
 <section id="begin">
 
-    <div class="small">For you</div>
+    <div class="small">The beginning</div>
 
-    <h2>Happy 20th Birthday 🎂</h2>
+    <h2>Happy 20th Birthday, Jin Uncle 🎂</h2>
 
     <div class="card">
+
         <p>
             Today isn't just another birthday.
             It's the beginning of your twenties —
-            a whole new chapter of your life.
+            a completely new chapter of your life.
         </p>
 
         <p>
-            And before anything else, I just want you to know
-            that I'm genuinely proud of how far you've come.
+            And before anything else,
+            I want you to know that I'm genuinely proud
+            of how far you've come.
         </p>
+
+        <p>
+            You have been through difficult chapters,
+            but they never got to decide the person you became.
+        </p>
+
+    </div>
+
+    <button onclick="scrollToSection('memories')">
+        Before Chapter 20... →
+    </button>
+
+</section>
+
+
+<!-- MEMORIES -->
+
+<section id="memories">
+
+    <div class="small">A few memories</div>
+
+    <h2>Before Chapter 20… 🌙</h2>
+
+    <div class="card">
+
+        <p>
+            Some memories don't seem very important
+            when we're living them.
+            Somehow, years later, they're the ones we remember most.
+        </p>
+
+        <div class="memory">
+            “Ik Tara Bola, Ik Sara Bolay.” 😂
+        </div>
+
+        <p>
+            Childhood us probably couldn't have imagined
+            that the two kids who used to act like enemies
+            would eventually grow up and become friends.
+        </p>
+
+        <div class="memory">
+            From childhood teasing → teenage friendship → somehow becoming close. 🤍
+        </div>
+
+        <p>
+            Then came the jokes, the playful teasing,
+            the endless “PGL” and “Churail” moments...
+            and somehow all those little things became
+            memories worth keeping.
+        </p>
+
+        <div class="memory">
+            And of course… football. ⚽
+            Because no Jin Uncle story would be complete without it.
+        </div>
+
+    </div>
+
+    <button onclick="scrollToSection('proud')">
+        Something I want you to know →
+    </button>
+
+</section>
+
+
+<!-- PROUD -->
+
+<section id="proud">
+
+    <div class="small">What I see in you</div>
+
+    <h2>I'm proud of you. 🤍</h2>
+
+    <div class="card">
+
+        <p>
+            Not because everything has always gone perfectly.
+        </p>
+
+        <p>
+            I'm proud of you because you've kept going
+            through the things that weren't easy.
+        </p>
+
+        <p>
+            For being patient.
+            For carrying responsibilities.
+            For staying humble.
+        </p>
+
+        <p>
+            For always showing respect to children and elders.
+            For meaning what you say.
+            And for keeping your word.
+        </p>
+
+        <p>
+            I've seen difficult moments too —
+            moments when life hurt,
+            when things didn't turn out the way you hoped,
+            and when seeing you go through those times
+            made me wish I could somehow make things easier.
+        </p>
+
+        <p class="highlight">
+            But you kept moving forward.
+        </p>
+
+        <p>
+            And I hope you never forget that
+            this is something worth being proud of.
+        </p>
+
     </div>
 
     <button onclick="scrollToSection('wishes')">
@@ -173,11 +357,13 @@ button:hover {
 </section>
 
 
+<!-- WISHES -->
+
 <section id="wishes">
 
     <div class="small">For your twenties</div>
 
-    <h2>20 wishes 🤍</h2>
+    <h2>20 wishes for Jin Uncle ✨</h2>
 
     <div class="wishes">
 
@@ -195,7 +381,7 @@ button:hover {
         <div class="wish">12 ✦ Stability</div>
         <div class="wish">13 ✦ Growth</div>
         <div class="wish">14 ✦ Beautiful memories</div>
-        <div class="wish">15 ✦ A career you love</div>
+        <div class="wish">15 ✦ A career you're proud of</div>
         <div class="wish">16 ✦ Strength</div>
         <div class="wish">17 ✦ Laughter</div>
         <div class="wish">18 ✦ Family</div>
@@ -211,6 +397,8 @@ button:hover {
 </section>
 
 
+<!-- LETTER -->
+
 <section id="letter">
 
     <div class="small">A little letter</div>
@@ -221,18 +409,26 @@ button:hover {
 
         <p>
             You don't need to have everything figured out right now.
-            You're only 20, and there is still so much life ahead of you.
+            You're 20.
+            There is still so much life ahead of you.
         </p>
 
         <p>
-            I know the road hasn't always been easy.
-            But difficult chapters don't decide how the story ends.
+            Don't let one difficult chapter convince you
+            that the whole story will be difficult.
         </p>
 
         <p>
-            So keep going.
+            Your career will find its direction.
+            Your hard work will find its place.
+            And there will be opportunities you haven't even
+            imagined yet.
+        </p>
+
+        <p>
             Keep learning.
-            Keep believing in yourself.
+            Keep trying.
+            Keep believing that things can get better.
         </p>
 
         <p>
@@ -244,8 +440,11 @@ button:hover {
 
         <p>
             And whenever you forget how far you've come,
-            I hope you remember that someone is always quietly
-            cheering for you.
+            remember this:
+        </p>
+
+        <p class="highlight">
+            Someone is always quietly cheering for you. 🤍
         </p>
 
     </div>
@@ -257,24 +456,59 @@ button:hover {
 </section>
 
 
+<!-- FINAL -->
+
 <section id="final" class="hidden">
 
     <div class="heart">✦</div>
 
+    <div class="small">Chapter 20 begins now</div>
+
     <h1>Happy 20th 🤍</h1>
 
     <p>
-        May this chapter be the beginning
-        of something beautiful.
+        Jin Uncle,
     </p>
 
     <p>
-        <strong>Chapter 20 begins now.</strong>
+        May this chapter bring you
+        everything the previous ones couldn't.
     </p>
 
-    <div style="font-size:40px;">🎂 ✨ 🌙</div>
+    <p>
+        May you grow into the person
+        you've always wanted to become.
+    </p>
+
+    <p>
+        May you have more laughter than worries,
+        more peace than pressure,
+        and more beautiful memories than difficult days.
+    </p>
+
+    <p>
+        And most importantly...
+    </p>
+
+    <p class="highlight">
+        May Chapter 20 be the beginning
+        of something truly beautiful. ✨
+    </p>
+
+    <div style="font-size:45px; margin-top:25px;">
+        🎂 ✨ 🌙 ⚽
+    </div>
+
+    <p style="margin-top:40px;">
+        <strong>Happy Birthday, Jin Uncle.</strong>
+    </p>
 
 </section>
+
+
+<footer>
+    Made with a lot of thought, memories & a little bit of chaos. ✦
+</footer>
 
 
 <script>
@@ -287,14 +521,54 @@ function scrollToSection(id) {
 
 function showFinal() {
     const finalSection = document.getElementById("final");
+
     finalSection.classList.remove("hidden");
+
     finalSection.scrollIntoView({
         behavior: "smooth"
     });
 }
 
+
+/* MIDNIGHT COUNTDOWN */
+
+function updateCountdown() {
+
+    const now = new Date();
+
+    const birthday = new Date("September 6, 2026 00:00:00");
+
+    const difference = birthday - now;
+
+    const countdown = document.getElementById("countdown");
+
+    if (difference <= 0) {
+
+        countdown.innerHTML = "IT'S YOUR DAY ✨";
+
+        return;
+
+    }
+
+    const hours = Math.floor(difference / (1000 * 60 * 60));
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor(
+        (difference % (1000 * 60)) / 1000
+    );
+
+    countdown.innerHTML =
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
 </script>
 
 </body>
 </html>
-
