@@ -1,14 +1,300 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chapter 20 🤍</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 20 ✨</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: white;
+    background: linear-gradient(135deg, #080812, #15152b, #090910);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px;
+    background-position: 20px 30px, 70px 90px;
+    opacity: 0.5;
+}
+
+section {
+    min-height: 100vh;
+    padding: 80px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h1 {
+    font-size: clamp(45px, 10vw, 90px);
+    margin: 10px;
+    letter-spacing: 4px;
+}
+
+h2 {
+    font-size: 35px;
+}
+
+p {
+    max-width: 700px;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+.small {
+    opacity: 0.7;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+.card {
+    max-width: 650px;
+    padding: 35px;
+    margin: 15px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+}
+
+.wishes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    max-width: 750px;
+    width: 100%;
+    gap: 12px;
+}
+
+.wish {
+    padding: 20px 10px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.06);
+}
+
+.hidden {
+    display: none;
+}
+
+#final {
+    font-size: 25px;
+}
+
+.heart {
+    font-size: 45px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-10px);
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>Happy 20th Birthday! 🎂</h1>
+<div class="stars"></div>
 
-    <p>Welcome to the beginning of your Chapter 20.</p>
+<section>
+    <div class="small">September 6, 2026</div>
+
+    <div class="heart">✦</div>
+
+    <h1>Chapter 20</h1>
+
+    <p>
+        A new decade.<br>
+        A new chapter.<br>
+        And so many beautiful pages still waiting to be written.
+    </p>
+
+    <button onclick="scrollToSection('begin')">
+        Begin your chapter →
+    </button>
+</section>
+
+
+<section id="begin">
+
+    <div class="small">For you</div>
+
+    <h2>Happy 20th Birthday 🎂</h2>
+
+    <div class="card">
+        <p>
+            Today isn't just another birthday.
+            It's the beginning of your twenties —
+            a whole new chapter of your life.
+        </p>
+
+        <p>
+            And before anything else, I just want you to know
+            that I'm genuinely proud of how far you've come.
+        </p>
+    </div>
+
+    <button onclick="scrollToSection('wishes')">
+        20 wishes for you ✨
+    </button>
+
+</section>
+
+
+<section id="wishes">
+
+    <div class="small">For your twenties</div>
+
+    <h2>20 wishes 🤍</h2>
+
+    <div class="wishes">
+
+        <div class="wish">01 ✦ Peace</div>
+        <div class="wish">02 ✦ Courage</div>
+        <div class="wish">03 ✦ Success</div>
+        <div class="wish">04 ✦ Happiness</div>
+        <div class="wish">05 ✦ Good health</div>
+        <div class="wish">06 ✦ Confidence</div>
+        <div class="wish">07 ✦ Opportunities</div>
+        <div class="wish">08 ✦ Good people</div>
+        <div class="wish">09 ✦ Patience</div>
+        <div class="wish">10 ✦ Purpose</div>
+        <div class="wish">11 ✦ Adventure</div>
+        <div class="wish">12 ✦ Stability</div>
+        <div class="wish">13 ✦ Growth</div>
+        <div class="wish">14 ✦ Beautiful memories</div>
+        <div class="wish">15 ✦ A career you love</div>
+        <div class="wish">16 ✦ Strength</div>
+        <div class="wish">17 ✦ Laughter</div>
+        <div class="wish">18 ✦ Family</div>
+        <div class="wish">19 ✦ Dreams coming true</div>
+        <div class="wish">20 ✦ A beautiful life</div>
+
+    </div>
+
+    <button onclick="scrollToSection('letter')">
+        There's something else... 💌
+    </button>
+
+</section>
+
+
+<section id="letter">
+
+    <div class="small">A little letter</div>
+
+    <h2>For the days you doubt yourself</h2>
+
+    <div class="card">
+
+        <p>
+            You don't need to have everything figured out right now.
+            You're only 20, and there is still so much life ahead of you.
+        </p>
+
+        <p>
+            I know the road hasn't always been easy.
+            But difficult chapters don't decide how the story ends.
+        </p>
+
+        <p>
+            So keep going.
+            Keep learning.
+            Keep believing in yourself.
+        </p>
+
+        <p>
+            I hope your twenties are kinder to you.
+            I hope you find the success you've been working toward,
+            the peace you've been looking for,
+            and countless reasons to smile.
+        </p>
+
+        <p>
+            And whenever you forget how far you've come,
+            I hope you remember that someone is always quietly
+            cheering for you.
+        </p>
+
+    </div>
+
+    <button onclick="showFinal()">
+        One last thing...
+    </button>
+
+</section>
+
+
+<section id="final" class="hidden">
+
+    <div class="heart">✦</div>
+
+    <h1>Happy 20th 🤍</h1>
+
+    <p>
+        May this chapter be the beginning
+        of something beautiful.
+    </p>
+
+    <p>
+        <strong>Chapter 20 begins now.</strong>
+    </p>
+
+    <div style="font-size:40px;">🎂 ✨ 🌙</div>
+
+</section>
+
+
+<script>
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function showFinal() {
+    const finalSection = document.getElementById("final");
+    finalSection.classList.remove("hidden");
+    finalSection.scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
 
 </body>
 </html>
+
